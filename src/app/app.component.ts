@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageCode } from '@app/core/translations';
 import { StoreUrlService } from '@app/core/store-url';
+import { LocalStorageKeys } from '@app/shared/models';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.translateService.use(LanguageCode.pl_PL);
+    this.translateService.use(localStorage.getItem(LocalStorageKeys.LangOption) || LanguageCode.pl_PL);
     this.storeUrlService.setPreviousUrl();
   }
 }
